@@ -65,9 +65,7 @@ public class Game {
                 hero.moveRight();
                 break;
             case Character:
-                if(key.getCharacter() == 'q') {
-                    screen.close();
-                }
+                if(key.getCharacter() == 'q') {screen.close();}
                 break;
             case EOF:
                 flag = false;

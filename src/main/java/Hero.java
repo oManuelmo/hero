@@ -13,10 +13,8 @@ public class Hero {
     public void setX(int x) {this.x = x;}
     public void setY(int y) {this.y = y;}
 
-    public void draw(Screen screen) {
-        screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
+    public void draw(Screen screen) {screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);}
 
-    }
     public void moveUp() {--y;}
     public void moveRight() {++x;}
     public void moveDown() {++y;}
