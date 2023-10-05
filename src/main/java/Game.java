@@ -8,26 +8,23 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 public class Game {
     private Screen screen;
-    private int x = 10;
-    private int y = 10;
+
     Game() throws IOException {
         try {
+            TerminalSize terminalSize = new TerminalSize(100, 20);
+            DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
             Terminal terminal = new DefaultTerminalFactory().createTerminal();
-            Screen screen = new TerminalScreen(terminal);
+            screen = new TerminalScreen(terminal);
             screen.setCursorPosition(null); // we don't need a cursor
             screen.startScreen(); // screens must be started
             screen.doResizeIfNecessary(); // resize screen if necessary
-            TerminalSize terminalSize = new TerminalSize(40, 20);
-            DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-            terminal = terminalFactory.createTerminal();
-
+            screen.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     private void draw() throws IOException {
         try {
-
             screen.clear();
             screen.setCharacter(10, 10, TextCharacter.fromCharacter('X')[0]);
             screen.refresh();
@@ -43,14 +40,5 @@ public class Game {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args) throws IOException {
-        try {
-            // Create a new Game object and call run()
-            Game game = new Game();
-            game.run();
-        } catch (IOException e) {
-            // Handle or log the exception at the application level
-            e.printStackTrace();
-        }
-    }
+
 }
