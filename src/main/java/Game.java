@@ -9,15 +9,14 @@ import java.io.IOException;
 public class Game {
 
     Game() throws IOException {
-        TerminalScreen screen = null;
-        screen.clear();
-        screen.setCharacter(10, 10, TextCharacter.fromCharacter('X')[0]);
-        screen.refresh();
         try {
             TerminalSize terminalSize = new TerminalSize(40, 20);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
             Terminal terminal = terminalFactory.createTerminal();
-            screen = new TerminalScreen(terminal);
+            TerminalScreen screen = new TerminalScreen(terminal);
+            screen.clear();
+            screen.setCharacter(10, 10, TextCharacter.fromCharacter('X')[0]);
+            screen.refresh();
             screen.setCursorPosition(null); // we don't need a cursor
             screen.startScreen(); // screens must be started
             screen.doResizeIfNecessary(); // resize screen if necessary
