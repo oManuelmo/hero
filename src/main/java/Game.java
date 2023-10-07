@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Game {
     private Screen screen;
     private Arena arena;
-    public boolean flag;
+    private boolean flag;
 
     Game() throws IOException {
         try {
@@ -47,6 +47,10 @@ public class Game {
                 draw();
                 KeyStroke key = screen.readInput();
                 processKey(key);
+                if (arena.coins.isEmpty()) {
+                    System.out.println("You won!");
+                    System.exit(0);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
